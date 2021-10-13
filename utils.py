@@ -19,7 +19,6 @@ def query(name):
     print(f"Age: {person.age}")
 
 
-
 def delete(name):
     person = People.query.filter_by(name=name).first()
     person.delete()
