@@ -1,4 +1,4 @@
-from models import People
+from models import People, Users
 
 
 def insert(name, age):
@@ -24,9 +24,21 @@ def delete(name):
     person.delete()
 
 
+def insert_user(login, password):
+    user = Users(login=login, password=password)
+    user.save()
+
+
+def show_all():
+    users = Users.query.all()
+
+
 if __name__ == '__main__':
+    show_all()
     # insert("D", 4)
-    show()
+    #show()
     # query("D")
     # change("C")
     # delete("A")
+    # insert_user("1", "2")
+    # insert_user("a", "b")
