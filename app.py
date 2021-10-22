@@ -7,19 +7,6 @@ auth = HTTPBasicAuth()
 app = Flask(__name__)
 api = Api(app)
 
-# USERS = {
-#     "abc": "123",
-#     "xyz": "890"
-# }
-#
-#
-# @auth.verify_password
-# def verify(login, password):
-#     print(USERS.get(login) == password)
-#     if not (login, password):
-#         return False
-#     return USERS.get(login) == password
-
 
 @auth.verify_password
 def verify(login, password):
@@ -73,7 +60,13 @@ class ListPeople(Resource):
     @auth.login_required
     def get(self):
         people = People.query.all()
-        response = [[{"id": person.id, "name": person.name, "age": person.age}] for person in people]
+        response = [
+            {
+                "id": person.id,
+                "name": person.name,
+                "age": person.age
+            } for person in people
+        ]
         return response
 
     @auth.login_required
@@ -93,7 +86,13 @@ class ListActivities(Resource):
     @auth.login_required
     def get(self):
         activities = Activities.query.all()
-        response = [{"id": activity.id, "name": activity.person.name, "event": activity.name} for activity in activities]
+        response = [
+            {
+                "id": activity.id,
+                "name": activity.person.name,
+                "event": activity.name
+            } for activity in activities
+        ]
         return response
 
     @auth.login_required

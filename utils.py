@@ -36,7 +36,7 @@ def show_all():
 if __name__ == '__main__':
     show_all()
     # insert("D", 4)
-    #show()
+    # show()
     # query("D")
     # change("C")
     # delete("A")
